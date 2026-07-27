@@ -1,9 +1,0 @@
-$patch: delete
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: open-webui
-  namespace: homelab
-spec:
-  interval: 120m
-  url: https://helm.openwebui.com/

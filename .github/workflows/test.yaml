@@ -18,5 +18,7 @@ jobs:
         uses: fluxcd/pkg/actions/kubeconform@main
       - name: Setup kustomize
         uses: fluxcd/pkg/actions/kustomize@main
+        with:
+          version: 5.8.1
       - name: Validate manifests
         run: ./scripts/validate.sh

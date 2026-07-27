@@ -8,8 +8,7 @@ FluxCD GitOps configuration for my homelab Kubernetes cluster.
 - [List of applications](#list-of-applications)
 - [Repository structure](#repository-structure)
 - [Structure idea](#structure-idea)
-- [Flex/Stable bundles and promotion](#flexstable-bundles-and-promotion)
-- [Renovate update strategy](#renovate-update-strategy)
+- [Update strategy](#update-strategy)
 - [Secrets management](#secrets-management)
 - [Local testing](#local-testing)
 
@@ -74,17 +73,10 @@ Three VMs on Proxmox VE running [Talos Linux](https://www.talos.dev) as the Kube
 │   │   └── …
 │   └── bundles                 # Environment aggregations with version-constraint patches
 │       ├── dev-flex            # Loose constraints — picks up any new release
-│       ├── stage-flex          # Major-pinned — tracks latest within a major version
 │       └── prod-stable         # Exact pins — only explicitly approved versions
 ├── clusters
 │   ├── local                   # Local Kind cluster for development and testing
 │   │   └── …
-│   ├── stage                   # Staging Talos cluster
-│   │   ├── apps
-│   │   │   ├── kustomization.yaml   # Includes stage-flex bundle + cluster overlays
-│   │   │   └── flux-promotion       # Alert + Provider for GitHub dispatch on upgrade success
-│   │   ├── bundle.yaml
-│   │   └── crds.yaml
 │   └── homelab                 # Production Talos cluster
 │       ├── apps
 │       │   ├── kustomization.yaml   # Includes prod-stable bundle + cluster overlays + patches
@@ -95,7 +87,6 @@ Three VMs on Proxmox VE running [Talos Linux](https://www.talos.dev) as the Kube
 │   └── homelab
 ├── scripts                     # Utility scripts (validation, SOPS helpers)
 └── .github/workflows
-    ├── promotion.yaml          # Promotes stage-flex versions into prod-stable via PR
     ├── e2e.yaml                # End-to-end test on a Kind cluster
     ├── commitlint.yaml         # Conventional commit message validation
     └── test.yaml               # Manifest validation and linting
@@ -109,37 +100,21 @@ The basic idea is to define three levels of Kustomize layering:
 2. **Bundle** (`apps/bundles/<bundle>`) — aggregates base apps and overrides only `spec.chart.spec.version` via a single patch file.
 3. **Cluster** (`clusters/<cluster>/apps/`) — entry point that includes a bundle plus cluster-specific resources (storage, routing, secrets refs, network policies) and values patches.
 
-## Flex/Stable Bundles and Promotion
+## Update Strategy
 
-Three bundles cover different stability requirements:
+Application updates are managed by [Renovate](https://docs.renovatebot.com/) tracking Docker container image tags. Each cluster values file that overrides an application image includes a `# renovate: datasource=docker` annotation. Renovate detects new image tags and opens PRs.
 
-| Bundle | Version constraint style | Example | Purpose |
-| --- | --- | --- | --- |
-| `dev-flex` | Wildcard / pre-release | `"*"` | Immediately picks up every new release for experimentation |
-| `stage-flex` | Major-pinned | `"1.x"`, `"2.x"` | Tracks the latest within a major, absorbs minor/patch automatically |
-| `prod-stable` | Exact pin | `"1.19.0"`, `"2.7.0"` | Only explicitly approved versions reach production |
-
-All three bundles reference the same `apps/base/<name>` manifests; only the version constraint differs.
-
-**Promotion flow:**
-
-When a HelmRelease upgrade succeeds on the **stage** cluster, Flux sends a `repository_dispatch` event to GitHub via the [notification controller](https://fluxcd.io/flux/use-cases/gh-actions-helm-promotion/). The [promotion workflow](.github/workflows/promotion.yaml) receives the event, extracts the new chart version, patches the pinned version in `apps/bundles/prod-stable/prod-stable.yaml`, and opens a PR. After review and merge, Flux in the **homelab** cluster reconciles and applies the upgrade.
+**Update flow:**
 
 ```
-stage-flex upgrade succeeds → Flux Alert → GitHub dispatch → promotion workflow → PR → merge → Flux reconciles homelab
+Renovate detects new image tag → Opens PR with image bump → CI validates manifests → Review & merge → Flux reconciles homelab
 ```
 
-The workflow also supports manual triggers via `workflow_dispatch` for ad-hoc promotions.
-
-## Renovate Update Strategy
-
-[Renovate](https://docs.renovatebot.com/) uses its built-in [Flux manager](https://docs.renovatebot.com/modules/manager/flux/) to understand FluxCD resources (`HelmRelease`, `HelmRepository`, `OCIRepository`, etc.) and opens PRs to bump versions across `apps/base/**`, `apps/bundles/**`, and `clusters/**`.
-
-A custom regex manager additionally handles `*-values.yaml` files annotated with `# renovate: datasource=… depName=…` comments for container image tags embedded in Helm values.
+Helm chart versions remain pinned in `prod-stable` and are updated manually when needed. Renovate does not track chart version changes.
 
 ## Secrets Management
 
-- **local / stage** — secrets are encrypted in Git with [SOPS](https://github.com/getsops/sops) (age keys) and decrypted by Flux at reconcile time using the `sops-age` secret in `flux-system`.
+- **local** — secrets are encrypted in Git with [SOPS](https://github.com/getsops/sops) (age keys) and decrypted by Flux at reconcile time using the `sops-age` secret in `flux-system`.
 - **homelab** (production) — [External Secrets Operator](https://external-secrets.io/) pulls runtime credentials from Vaultwarden (via the in-cluster bitwarden-cli webhook) into Kubernetes Secrets. SOPS is only used to solve the chicken-and-egg problem during initial cluster bootstrap.
 
 ## Local Testing

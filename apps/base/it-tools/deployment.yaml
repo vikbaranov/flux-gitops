@@ -30,6 +30,7 @@ spec:
 
       containers:
         - name: it-tools
+          # renovate: datasource=docker depName=corentinth/it-tools versioning=loose
           image: corentinth/it-tools:2024.10.22-7ca5933
           imagePullPolicy: IfNotPresent
           ports:

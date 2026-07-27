@@ -10,6 +10,10 @@ spec:
     - kind: Secret
       name: vaultwarden-values
   values:
+    image:
+      repository: vaultwarden/server
+      # renovate: datasource=docker depName=vaultwarden/server versioning=semver
+      tag: "1.33.2"
     timeZone: "Europe/Moscow"
     domain: "https://vaultwarden.${cluster_subdomain}"
     database:

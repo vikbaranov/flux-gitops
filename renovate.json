@@ -29,6 +29,22 @@
     {
       "matchPackageNames": ["linuxserver/qbittorrent"],
       "allowedVersions": "/^5\\./"
+    },
+    {
+      "matchManagers": ["flux"],
+      "matchDepTypes": ["helm"],
+      "matchPackageNames": [
+        "jellyfin",
+        "podinfo",
+        "goldpinger",
+        "mattermost-team-edition",
+        "open-webui",
+        "vaultwarden",
+        "zeroclaw",
+        "immich",
+        "n8n"
+      ],
+      "enabled": false
     }
   ],
   "flux": {
