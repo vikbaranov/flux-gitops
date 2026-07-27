@@ -5,6 +5,10 @@ metadata:
   namespace: monitoring
 spec:
   values:
+    image:
+      repository: bloomberg/goldpinger
+      # renovate: datasource=docker depName=bloomberg/goldpinger versioning=semver
+      tag: "3.10.2"
     goldpinger:
       udp:
         enabled: true
