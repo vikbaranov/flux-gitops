@@ -9,6 +9,8 @@ spec:
   values:
     image:
       repository: homelab.cr.cloud.ru/mattermost
+      # renovate: datasource=docker depName=homelab.cr.cloud.ru/mattermost versioning=semver
+      tag: "10.8.1"
     persistence:
       data:
         enabled: false
