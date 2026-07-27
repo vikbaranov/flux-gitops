@@ -23,6 +23,7 @@ spec:
         - name: registry-credentials
       containers:
         - name: bitwarden-cli
+          # renovate: datasource=docker depName=homelab.cr.cloud.ru/bitwarden-cli versioning=docker
           image: homelab.cr.cloud.ru/bitwarden-cli@sha256:cce1618fb7fcffecc997aa6f7dfde755142a32469b016dab9c0182db7a0e1df5
           imagePullPolicy: IfNotPresent
           resources:
