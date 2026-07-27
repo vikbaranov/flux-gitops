@@ -8,7 +8,7 @@ spec:
     image:
       repository: bloomberg/goldpinger
       # renovate: datasource=docker depName=bloomberg/goldpinger versioning=semver
-      tag: "3.10.2"
+      tag: "3.11.2"
     goldpinger:
       udp:
         enabled: true
