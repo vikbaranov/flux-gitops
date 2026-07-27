@@ -4,6 +4,11 @@ metadata:
   name: csi-nfs
 spec:
   values:
+    image:
+      nfs:
+        repository: registry.k8s.io/sig-storage/nfsplugin
+        # renovate: datasource=docker depName=registry.k8s.io/sig-storage/nfsplugin versioning=semver
+        tag: "v4.12.0"
     storageClass:
       create: true
       annotations:

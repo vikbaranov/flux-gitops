@@ -10,6 +10,10 @@ spec:
       namespace: "monitoring"
   values:
     server:
+      image:
+        repository: victoriametrics/victoria-logs
+        # renovate: datasource=docker depName=victoriametrics/victoria-logs versioning=semver
+        tag: "v1.47.0"
       persistentVolume:
         enabled: true
         size: 2Gi

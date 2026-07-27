@@ -7,6 +7,11 @@ spec:
     - name: "vmks"
       namespace: "monitoring"
   values:
+    image:
+      registry: quay.io
+      repository: prometheus/blackbox-exporter
+      # renovate: datasource=docker depName=quay.io/prometheus/blackbox-exporter versioning=semver
+      tag: "v0.26.0"
     serviceMonitor:
       selfMonitor:
         enabled: true

@@ -11,6 +11,10 @@ spec:
       chart: external-dns
       version: "1.19.x"
   values:
+    image:
+      repository: registry.k8s.io/external-dns/external-dns
+      # renovate: datasource=docker depName=registry.k8s.io/external-dns/external-dns versioning=semver
+      tag: "v0.21.0"
     sources:
       - service
     domainFilters:
