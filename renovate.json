@@ -33,12 +33,24 @@
     {
       "matchManagers": ["flux"],
       "matchDepTypes": ["helm"],
+      "matchPackageNames": [
+        "jellyfin",
+        "podinfo",
+        "goldpinger",
+        "mattermost-team-edition",
+        "open-webui",
+        "vaultwarden",
+        "zeroclaw",
+        "immich",
+        "n8n"
+      ],
       "enabled": false
     }
   ],
   "flux": {
     "managerFilePatterns": [
       "/apps/base/.+\\.ya?ml$/",
+      "/apps/bundles/.+\\.ya?ml$/",
       "/clusters/.+\\.ya?ml$/"
     ]
   }

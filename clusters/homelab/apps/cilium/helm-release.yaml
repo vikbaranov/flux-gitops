@@ -6,10 +6,6 @@ metadata:
 spec:
   interval: 15m
   values:
-    image:
-      repository: quay.io/cilium/cilium
-      # renovate: datasource=docker depName=quay.io/cilium/cilium versioning=semver
-      tag: "v1.18.7"
     kubeProxyReplacement: true
     k8sServiceHost: localhost
     k8sServicePort: 6443

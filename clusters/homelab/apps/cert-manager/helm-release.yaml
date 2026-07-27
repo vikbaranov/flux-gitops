@@ -7,10 +7,6 @@ spec:
     - name: external-secrets
       namespace: external-secrets
   values:
-    image:
-      repository: quay.io/jetstack/cert-manager-controller
-      # renovate: datasource=docker depName=quay.io/jetstack/cert-manager-controller versioning=semver
-      tag: "v1.19.0"
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=192.168.100.2:53

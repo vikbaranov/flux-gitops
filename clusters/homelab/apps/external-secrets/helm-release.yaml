@@ -6,10 +6,6 @@ metadata:
   namespace: external-secrets
 spec:
   values:
-    image:
-      repository: ghcr.io/external-secrets/external-secrets
-      # renovate: datasource=docker depName=ghcr.io/external-secrets/external-secrets versioning=semver
-      tag: "v2.5.0"
     serviceMonitor:
       enabled: true
     bitwarden-sdk-server:
