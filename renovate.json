@@ -29,12 +29,16 @@
     {
       "matchPackageNames": ["linuxserver/qbittorrent"],
       "allowedVersions": "/^5\\./"
+    },
+    {
+      "matchManagers": ["flux"],
+      "matchDepTypes": ["helm"],
+      "enabled": false
     }
   ],
   "flux": {
     "managerFilePatterns": [
       "/apps/base/.+\\.ya?ml$/",
-      "/apps/bundles/.+\\.ya?ml$/",
       "/clusters/.+\\.ya?ml$/"
     ]
   }
