@@ -19,7 +19,7 @@ spec:
       containers:
         - name: httpbin
           # renovate: datasource=docker depName=ghcr.io/mccutchen/go-httpbin versioning=semver
-          image: ghcr.io/mccutchen/go-httpbin:2.24.0
+          image: ghcr.io/mccutchen/go-httpbin:2.25.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
