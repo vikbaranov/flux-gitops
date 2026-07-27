@@ -76,6 +76,7 @@ spec:
             seccompProfile:
               type: RuntimeDefault
         - name: sync
+          # renovate: datasource=docker depName=busybox versioning=semver
           image: busybox:1.37
           command:
             - /bin/sh
