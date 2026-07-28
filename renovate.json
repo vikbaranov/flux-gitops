@@ -32,7 +32,6 @@
     },
     {
       "matchManagers": ["flux"],
-      "matchDepTypes": ["helm"],
       "matchPackageNames": [
         "jellyfin",
         "podinfo",
