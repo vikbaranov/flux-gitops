@@ -13,7 +13,7 @@ spec:
     image:
       repository: vaultwarden/server
       # renovate: datasource=docker depName=vaultwarden/server versioning=semver
-      tag: "1.37.0"
+      tag: "1.37.1"
     timeZone: "Europe/Moscow"
     domain: "https://vaultwarden.${cluster_subdomain}"
     database:
