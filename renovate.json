@@ -33,7 +33,6 @@
     {
       "matchManagers": ["flux"],
       "matchPackageNames": [
-        "jellyfin",
         "podinfo",
         "goldpinger",
         "mattermost-team-edition",
