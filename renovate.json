@@ -28,17 +28,6 @@
     {
       "matchPackageNames": ["linuxserver/qbittorrent"],
       "allowedVersions": "/^5\\./"
-    },
-    {
-      "matchManagers": ["flux"],
-      "matchPackageNames": [
-        "podinfo",
-        "goldpinger",
-        "vaultwarden",
-        "immich",
-        "n8n"
-      ],
-      "enabled": false
     }
   ],
   "flux": {

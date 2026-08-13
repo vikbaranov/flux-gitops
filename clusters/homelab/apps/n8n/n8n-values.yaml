@@ -5,10 +5,6 @@ metadata:
   namespace: homelab
 spec:
   values:
-    image:
-      repository: n8nio/n8n
-      # renovate: datasource=docker depName=n8nio/n8n versioning=semver
-      tag: 2.33.2
     main:
       config:
         n8n:

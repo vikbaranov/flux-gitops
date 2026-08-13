@@ -6,10 +6,6 @@ spec:
   test:
     enable: false
   values:
-    image:
-      repository: ghcr.io/stefanprodan/podinfo
-      # renovate: datasource=docker depName=ghcr.io/stefanprodan/podinfo versioning=semver
-      tag: "6.14.1"
     httpRoute:
       enabled: true
       parentRefs:
