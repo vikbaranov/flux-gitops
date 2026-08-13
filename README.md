@@ -54,8 +54,6 @@ Three VMs on Proxmox VE running [Talos Linux](https://www.talos.dev) as the Kube
 - [immich](apps/base/immich) — [Self-hosted photo management](https://immich.app/)
 - [jellyfin](apps/base/jellyfin) — [Media server](https://jellyfin.org/)
 - [n8n](apps/base/n8n) — [Workflow and AI automation](https://n8n.io/)
-- [open-webui](apps/base/open-webui) — [Web interface for AI models](https://openwebui.com/)
-- [mattermost](apps/base/mattermost) — [Self-hosted chat](https://mattermost.com/)
 - [httpbin](apps/base/httpbin) — HTTP request and response test service
 - [qbittorrent](apps/base/qbittorrent) — [BitTorrent client](https://www.qbittorrent.org/)
 - [it-tools](apps/base/it-tools) — [Collection of useful IT utilities](https://it-tools.tech/)

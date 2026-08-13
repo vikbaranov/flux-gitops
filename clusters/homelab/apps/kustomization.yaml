@@ -23,10 +23,8 @@ resources:
   - misc
   - n8n
   - opensearch
-  - open-webui
   - qbittorrent
   - vaultwarden
-  - zeroclaw
   - victoria-logs
   - victoria-metrics
   - flux
@@ -36,10 +34,6 @@ patches:
   - path: istio/rm-objects.yaml
   # victoria-logs
   - path: victoria-logs/rm-objects.yaml
-  # delete mattermost
-  - path: mattermost/rm-objects.yaml
-  # delete open-webui
-  - path: open-webui/rm-objects.yaml
   # delete csi-nfs
   - path: csi-nfs/rm-objects.yaml
   # delete opensearch
@@ -99,10 +93,6 @@ patches:
     target:
       kind: HelmRelease
       name: opensearch
-  - path: open-webui/open-webui-values.yaml
-    target:
-      kind: HelmRelease
-      name: open-webui
   - path: goldpinger/goldpinger-values.yaml
     target:
       kind: HelmRelease
@@ -119,10 +109,6 @@ patches:
     target:
       kind: HelmRelease
       name: vaultwarden
-  - path: zeroclaw/helm-release.yaml
-    target:
-      kind: HelmRelease
-      name: zeroclaw
   - path: victoria-logs/helm-release.yaml
     target:
       kind: HelmRelease

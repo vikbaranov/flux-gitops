@@ -4,7 +4,6 @@
     "config:recommended"
   ],
   "ignorePaths": [
-    "apps/base/mattermost/**",
     "clusters/homelab/apps/bitwarden-cli/**",
     "clusters/homelab/apps/n8n/gpt2giga.yaml",
     "clusters/**/flux-system/**"
@@ -35,10 +34,7 @@
       "matchPackageNames": [
         "podinfo",
         "goldpinger",
-        "mattermost-team-edition",
-        "open-webui",
         "vaultwarden",
-        "zeroclaw",
         "immich",
         "n8n"
       ],

@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: zeroclaw
-  namespace: homelab
-spec:
-  interval: 120m
-  url: https://niklasfrick.github.io/zeroclaw-helm

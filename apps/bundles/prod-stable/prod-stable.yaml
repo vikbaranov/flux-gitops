@@ -226,21 +226,6 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: mattermost
-  namespace: homelab
-spec:
-  chart:
-    spec:
-      chart: mattermost-team-edition
-      version: "6.6.0"
-      sourceRef:
-        kind: HelmRepository
-        name: mattermost
-        namespace: homelab
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
   name: n8n
   namespace: homelab
 spec:
@@ -251,21 +236,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: 8gears
-        namespace: homelab
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: open-webui
-  namespace: homelab
-spec:
-  chart:
-    spec:
-      chart: open-webui
-      version: "8.22.1"
-      sourceRef:
-        kind: HelmRepository
-        name: open-webui
         namespace: homelab
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -312,18 +282,4 @@ spec:
         kind: HelmRepository
         name: vaultwarden
         namespace: vaultwarden
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: zeroclaw
-  namespace: homelab
-spec:
-  chart:
-    spec:
-      chart: zeroclaw
-      version: "0.2.1"
-      sourceRef:
-        kind: HelmRepository
-        name: zeroclaw
-        namespace: homelab
+

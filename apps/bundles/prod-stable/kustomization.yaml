@@ -20,14 +20,11 @@ resources:
   - ../../base/istio
   - ../../base/it-tools
   - ../../base/jellyfin
-  - ../../base/mattermost
   - ../../base/n8n
   - ../../base/opensearch
-  - ../../base/open-webui
   - ../../base/podinfo
   - ../../base/qbittorrent
   - ../../base/vaultwarden
   - ../../base/metrics-server
-  - ../../base/zeroclaw
 patches:
   - path: prod-stable.yaml
