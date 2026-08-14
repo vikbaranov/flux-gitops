@@ -21,7 +21,6 @@ resources:
   - ../../base/it-tools
   - ../../base/jellyfin
   - ../../base/n8n
-  - ../../base/opensearch
   - ../../base/podinfo
   - ../../base/qbittorrent
   - ../../base/vaultwarden

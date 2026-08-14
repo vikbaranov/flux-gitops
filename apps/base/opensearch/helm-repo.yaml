@@ -1,9 +1,0 @@
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: opensearch
-  namespace: homelab
-spec:
-  interval: 120m
-  url: https://opensearch-project.github.io/helm-charts/

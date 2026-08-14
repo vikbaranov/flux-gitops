@@ -22,7 +22,6 @@ resources:
   - jellyfin
   - misc
   - n8n
-  - opensearch
   - qbittorrent
   - vaultwarden
   - victoria-logs
@@ -36,8 +35,6 @@ patches:
   - path: victoria-logs/rm-objects.yaml
   # delete csi-nfs
   - path: csi-nfs/rm-objects.yaml
-  # delete opensearch
-  - path: opensearch/rm-objects.yaml
   # delete n8n
   - path: n8n/rm-objects.yaml
 
@@ -89,10 +86,6 @@ patches:
     target:
       kind: HelmRelease
       name: n8n
-  - path: opensearch/helm-release.yaml
-    target:
-      kind: HelmRelease
-      name: opensearch
   - path: goldpinger/goldpinger-values.yaml
     target:
       kind: HelmRelease

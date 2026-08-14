@@ -241,21 +241,6 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: opensearch
-  namespace: homelab
-spec:
-  chart:
-    spec:
-      chart: opensearch
-      version: "3.6.0"
-      sourceRef:
-        kind: HelmRepository
-        name: opensearch
-        namespace: homelab
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
   name: podinfo
   namespace: homelab
 spec:
