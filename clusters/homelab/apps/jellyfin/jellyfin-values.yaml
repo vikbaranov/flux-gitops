@@ -8,7 +8,9 @@ spec:
     enable: false
   values:
     jellyfin:
-      envFrom: jellyfin
+      envFrom: 
+        - secretRef:
+            name: jellyfin
     image:
       repository: jellyfin/jellyfin
     persistence:
