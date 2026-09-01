@@ -47,7 +47,7 @@ spec:
           containers:
             - name: cleaner
               # renovate: datasource=docker depName=alpine/k8s versioning=semver
-              image: alpine/k8s:1.36.2
+              image: alpine/k8s:1.37.0
               imagePullPolicy: IfNotPresent
               command:
                 - /bin/sh
